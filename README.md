@@ -12,7 +12,7 @@ O tesoureiro é um projeto em Ruby on Rails.
 Depois de clonar este repositório no git basta iniciar o servidor do rails em modo de produção:
 
 
-`
+```ruby
 git clone git@github.com:Rudiney/tesoureiro.git
 
 cd tesoureiro
@@ -20,4 +20,4 @@ cd tesoureiro
 bundle install
 
 rails server -e production
-`
+```
