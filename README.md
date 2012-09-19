@@ -14,7 +14,10 @@ Depois de clonar este repositório no git basta iniciar o servidor do rails em m
 
 `
 git clone git@github.com:Rudiney/tesoureiro.git
+
 cd tesoureiro
+
 bundle install
+
 rails server -e production
 `
