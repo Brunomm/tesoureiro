@@ -1,0 +1,2 @@
+module CaixasHelper
+end

@@ -1,0 +1,35 @@
+<table class="transacoes" caixa=<%= c.id %>>
+	<thead>
+		<tr>
+			<th colspan='3'></th>
+			<th id='data'  align='left'>Data</th>
+			<th id='descricao' >Descrição</th>
+			<th id='valor'  align='right'>Valor</th>
+			<th id='saldo_realizado' align='right' rowspan=2>Saldo<br>Realizado</th>
+			<th id='saldo_previsto'  align='right' rowspan=2>Saldo<br>Previsto</th>
+		</tr>
+		<tr>
+			
+			<td>
+				<%= image_tag('seta_informacao_recolhida.png', class: "expande_todos_meses", style: 'width: 11px; height:11px; cursor: pointer;',               onclick: "$(this).hide(); $('table.transacoes[caixa=#{c.id}] img.recolhe_todos_meses').show(); $('table.transacoes[caixa=#{c.id}] div.flecha_esconde_informacao img.expande').click();") %>
+				<%= image_tag('seta_informacao_expandida.png', class: "recolhe_todos_meses", style: 'width: 11px; height:11px; cursor: pointer; display:none;', onclick: "$(this).hide(); $('table.transacoes[caixa=#{c.id}] img.expande_todos_meses').show(); $('table.transacoes[caixa=#{c.id}] div.flecha_esconde_informacao img.recolhe').click();") %>
+			</td>
+			
+			<td colspan='5'>
+				<%= filtra_html('table.transacoes[caixa=#c.id] tr.transacao[visivel=true]',{ id: "pesquisar_caixa_#{c.id}",
+					style: 'width: 100%', watermark: 'Pesquise...'}) %>
+			</td>
+		</tr>
+	</thead>
+	
+	<tbody>
+		
+		<% @previsto=0.00; @realizado=0.00 %>
+		
+		<% c.transacoes.order(:data).group_by(&:mes_ano).each do |mes_ano, trns| %>
+			<%= render(partial: "inicio_mes", locals:{c: c, mes_ano: mes_ano}) %>
+			<%= render(partial: 'linha_transacao', collection: trns, as: :t, locals:{mes_ano: mes_ano}) %>
+		<% end %>
+		
+	</tbody>
+</table>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tesoureiro</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	
+	<body controller='<%= controller.controller_name %>' action='<%= controller.action_name %>'>
+		
+		<nav id="menu">
+			<%= render('layouts/menu') %>
+		</nav>
+		
+		<div id="conteudo">
+			<%= yield %>
+		</div>
+		
+		<div id="direita">
+		</div>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<h1 align='center'> Transações </h1>
+
+<ul class='abas_caixas'>
+	<% @caixas.each do |c| %>
+		<li id='<%= c.id %>'><%= link_to_function(c.nome, "TRNs.selecionaCaixa(#{c.id})") %></li>
+	<% end %>
+</ul>
+
+<%= render(partial: 'aba_caixa', collection: @caixas, as: 'c') %>
+
+<script type="text/javascript" charset="utf-8">
+<% caixa = params[:caixa] || @caixas.first.id %>
+
+	TRNs.selecionaCaixa(<%= caixa %>);
+	
+	$('#caixa_<%= caixa %>_esconde_mes_<%= Date.today.to_s(:mes_ano).gsub('/', '') %> img.expande').click()
+
+	<% if @pisca %>
+			$('#caixa_<%= caixa %>_esconde_mes_<%= @pisca.data.to_s(:mes_ano).gsub('/', '') %> img.expande').click()
+			TRNs.pisca(<%= @pisca.id %>);
+	<% end %>
+</script>

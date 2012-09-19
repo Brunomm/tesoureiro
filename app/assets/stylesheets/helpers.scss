@@ -1,0 +1,142 @@
+@mixin sombra($p) {
+	-webkit-box-shadow: $p;
+  	   -moz-box-shadow: $p;
+        -o-box-shadow: $p;
+	        box-shadow: $p;
+}
+
+/* Não consegui fazer em somente 1 funçõa receber varias sombras */
+@mixin duas_sombras($p, $p2) {
+	-webkit-box-shadow: $p , $p2 ;
+  	   -moz-box-shadow: $p , $p2 ;
+        -o-box-shadow: $p , $p2 ;
+	        box-shadow: $p , $p2 ;
+}
+
+/*
+	Deixa o elemento com uma borda arredondada.
+	
+	@include borda_redonda(10px,superior)
+	
+	$que_borda: diz qual será a bora arredondada, pode ser *superior*, *inferior* ou *todas*
+	 padrao = *todas*
+*/
+@mixin borda_redonda($radius, $que_borda: todas){
+	@if $que_borda == todas {
+		-webkit-border-radius: $radius; 
+		   -moz-border-radius: $radius; 
+		        border-radius: $radius;
+	}
+	
+	@if $que_borda == superior {
+		-webkit-border-top-right-radius: $radius; 
+		   -moz-border-top-right-radius: $radius; 
+		        border-top-right-radius: $radius;
+		-webkit-border-top-left-radius: $radius; 
+		   -moz-border-top-left-radius: $radius; 
+		        border-top-left-radius: $radius;
+	}
+	
+	@if $que_borda == inferior {
+		-webkit-border-bottom-right-radius: $radius; 
+		   -moz-border-bottom-right-radius: $radius; 
+		        border-bottom-right-radius: $radius;
+		-webkit-border-bottom-left-radius: $radius; 
+		   -moz-border-bottom-left-radius: $radius; 
+		        border-bottom-left-radius: $radius;
+	}
+	
+	@if $que_borda == direita {
+		-webkit-border-bottom-right-radius: $radius; 
+		   -moz-border-bottom-right-radius: $radius; 
+		        border-bottom-right-radius: $radius;
+		-webkit-border-top-right-radius: $radius; 
+		   -moz-border-top-right-radius: $radius; 
+		        border-top-right-radius: $radius;
+	}
+	
+	@if $que_borda == esquerda {
+		-webkit-border-bottom-left-radius: $radius; 
+		   -moz-border-bottom-left-radius: $radius; 
+		        border-bottom-left-radius: $radius;
+		-webkit-border-top-left-radius: $radius; 
+		   -moz-border-top-left-radius: $radius; 
+		        border-top-left-radius: $radius;
+	}
+}
+
+/*
+	$cor: default bg color for non-complient browsers
+	$inicio: hex of the start
+	$fim:  hex of the stop
+	$direcao: top? 
+*/
+@mixin fundo_gradiente($inicio: #000, $fim: #fff, $direcao: top, $prc_inicio: 0%, $prc_fim: 100%, $cor_padrao: $fim ){
+	background: $cor_padrao;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop($prc_inicio, $inicio), color-stop($prc_fim, $fim)); /* Safari 4+, old Chrome */
+	background: -webkit-linear-gradient($direcao, $inicio, $fim $prc_fim); /* Safari 5.1+, Chrome */
+  background:    -moz-linear-gradient($direcao, $inicio, $fim $prc_fim); /* FF 3.6+ */
+	background:     -ms-linear-gradient('$direcao', $inicio, $fim $prc_fim); /* IE10 */
+	background:      -o-linear-gradient('$direcao', $inicio, $fim $prc_fim); /* Opera */
+	background:         linear-gradient('$direcao', $inicio, $fim $prc_fim);
+
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$inicio}', endColorstr='#{$fim}'); /* IE6 & IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$inicio}', endColorstr='#{$fim}')"; /* IE8+ */
+}
+
+@mixin fundo_gradiente_radial($cor_meio, $cor_laterais){
+  background: -moz-radial-gradient($cor_meio, $cor_laterais); /*FF 3.6+*/
+  background: -webkit-radial-gradient($cor_meio, $cor_laterais);/* Safari 5.1+, Chrome */
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(startColorstr='#{$cor_meio}', endColorstr='#{$cor_laterais}', style=2); /* IE8+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$cor_meio}', endColorstr='#{$cor_laterais}',GradientType=1 ); /* IE6-7*/
+  background: -ms-radial-gradient(center, ellipse cover, $cor_meio 50%, $cor_laterais 100%); /* IE10+ */
+  background: -o-radial-gradient(center, ellipse cover,  $cor_meio 50%, $cor_laterais 100%); /* Opera 12+ */
+}
+
+@mixin barra_rolagem() {
+	&::-webkit-scrollbar {
+		width: 7px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border: 1px solid rgba(0, 0, 0, 0.3);
+		background-color: rgba(0, 0, 0, 0.2);
+		@include borda_redonda(3px);
+		
+		&:hover{
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+	}
+}
+
+@mixin transicao_duracao($tempo){
+	-webkit-transition-duration:$tempo;	
+	   -moz-transition-duration:$tempo;
+	     -o-transition-duration:$tempo;
+	        transition-duration:$tempo;
+	
+-webkit-transition-timing-function: ease-out;
+   -moz-transition-timing-function: ease-out;
+     -o-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+}
+
+@mixin transicao_delay($tempo){
+	 -webkit-transition-delay:$tempo;
+	    -moz-transition-delay:$tempo;
+         -o-transition-delay:$tempo;
+            transition-delay:$tempo;
+
+	-webkit-transition-timing-function: ease-out;
+	   -moz-transition-timing-function: ease-out;
+	     -o-transition-timing-function: ease-out;
+	        transition-timing-function: ease-out;
+
+}
+
+@mixin opacity($o){
+	opacity: $o;
+	-moz-opacity: $o;
+	filter:alpha(opacity=($o*10));
+	
+}

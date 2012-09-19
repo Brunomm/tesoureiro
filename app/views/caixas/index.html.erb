@@ -1,0 +1,29 @@
+<h1>Caixas</h1>
+
+<%= link_to 'Novo Caixa', new_caixa_path %>
+
+<br />
+
+<table>
+	<tr>
+		<th>Nome</th>
+		<th>Saldo</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<% @caixas.each do |caixa| %>
+	<tr>
+		<td><%= caixa.nome %></td>
+		<td><%= caixa.saldo %></td>
+		<td><%= link_to 'Exibe', caixa %></td>
+		<td><%= link_to 'Edita', edit_caixa_path(caixa) %></td>
+		<td><%= link_to 'Deleta', caixa, confirm: 'Are you sure?', method: :delete %></td>
+	</tr>
+	<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Caixa', new_caixa_path %>

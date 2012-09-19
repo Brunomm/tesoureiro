@@ -1,0 +1,11 @@
+<tr class='inicio_mes'>
+	<td colspan='6' align='left'>
+		<%= flecha_esconde_informacao("table.transacoes[caixa=#{c.id}] tr.transacao[mes_ano=\"#{mes_ano}\"]", 
+			id: "caixa_#{c.id}_esconde_mes_#{mes_ano.gsub('/','')}",
+			ao_expandir: "var t = $('table.transacoes[caixa=#{c.id}]'); t.find('tr.transacao[mes_ano=\"#{mes_ano}\"]').attr('visivel', true);",
+			ao_recolher: "var t = $('table.transacoes[caixa=#{c.id}]'); t.find('tr.transacao[mes_ano=\"#{mes_ano}\"]').attr('visivel', false);") %>
+		<%= mes_ano %>
+	</td>
+	<td id='saldo_realizado' align='right'><%= colore_valor @realizado %></td>
+	<td id='saldo_previsto' align='right'><%= colore_valor @previsto %></td>
+</tr>

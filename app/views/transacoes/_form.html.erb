@@ -1,0 +1,41 @@
+<%= form_for(@transacao) do |f| %>
+	<% if @transacao.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@transacao.errors.count, "erro") %>:</h2>
+			<ul>
+				<% @transacao.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :caixa_id %>
+		<%= f.select :caixa_id , Caixa.all.map{|c| [c.nome, c.id]} %>
+	</div>
+	<div class="field">
+		<%= f.label :descricao, 'Descrição' %><br>
+		<%= f.text_field :descricao , size: 45 %>
+	</div>
+	<div class="field">
+		<%= f.label :data %>
+		<%= f.date_select :data %>
+	</div>
+	<div class="field">
+		<%= f.label :valor %><br>
+		<%= f.text_field :valor %>
+	</div>
+	<div class="field">
+		<%= f.check_box :realizada %>
+		<%= f.label :realizada, 'Realizada?' %>
+	</div>
+	<div class="field">
+		<%= label :repetir, 'Repetir para os próximos' %>
+		<%= text_field :repetir, :proximos_meses, size: 2, value: 0 %>
+		<%= label :meses, 'meses' %>
+	</div>
+	
+	<div class="actions"><%= f.submit %></div>
+	<br>
+<% end %>

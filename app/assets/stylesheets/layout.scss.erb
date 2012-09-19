@@ -1,0 +1,62 @@
+@import "helpers";
+
+body {
+	
+	nav#menu{
+		background-color: #8F8F8F;
+		@include sombra( -5px 0px 15px -5px black inset);
+		position: fixed;
+		top: 0px; left:0px;
+		
+		width: 100px;
+		height: 100%;
+		
+		ul{
+			margin:0px;padding: 0px;
+			list-style-type:none;
+			padding-top: 10px;
+			
+			li{
+				margin:0px;padding: 0px;
+				margin: 3px 0px 3px 0px;
+				
+				a{
+					text-decoration: none;
+					color:black;
+					text-shadow: white 0px 1px 1px;
+					padding: 0px 0px 1px 10px;
+					display: block;
+				}
+				
+				&.ativo{
+					background-color: white;
+					@include sombra( -5px 3px 15px -4px black);
+					@include borda_redonda(10px, esquerda)
+				}
+				
+				&:hover:not(.ativo){
+					background-color: #ABABAB;
+					@include borda_redonda(10px, esquerda)
+				}
+			}
+		}
+	}
+	
+	div#conteudo{
+		margin-left: 100px;
+		margin-right: 30px;
+		padding-left: 10px;
+		min-width: 550px;
+	}
+	
+	div#direita{
+		background-color: #8F8F8F;
+		@include sombra( 5px 0px 15px -5px black inset);
+		position: fixed;
+		top: 0px; right:0px;
+		
+		width: 30px;
+		height: 100%;
+		
+	}
+}

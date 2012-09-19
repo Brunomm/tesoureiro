@@ -1,0 +1,134 @@
+um:
+   caixa_id: 1
+   data: 2012-01-07
+   descricao: Salário
+   valor: 3000.00
+   realizada: true
+
+dois:
+   caixa_id: 1
+   data: 2012-01-08
+   descricao: Manu
+   valor: -150.00
+   realizada: true
+
+tres:
+   caixa_id: 1
+   data: 2012-01-09
+   descricao: Celular
+   valor: -100.00
+   realizada: true
+
+quatro:
+   caixa_id: 1
+   data: 2012-01-10
+   descricao: Tenis
+   valor: -180.00
+   realizada: true
+
+cinco:
+   caixa_id: 1
+   data: 2012-01-14
+   descricao: 2 bancadas
+   valor: -600.00
+   realizada: true
+
+seis:
+   caixa_id: 1
+   data: 2012-01-20
+   descricao: Almoço manu facul
+   valor: -20.00
+   realizada: true
+
+sete:
+   caixa_id: 1
+   data: 2012-01-21
+   descricao: Móveis
+   valor: -1680.00
+   realizada: true
+
+oito:
+   caixa_id: 1
+   data: 2012-02-10
+   descricao: Salário
+   valor: 3000.00
+   realizada: false
+
+nove:
+   caixa_id: 1
+   data: 2012-02-12
+   descricao: Móveis
+   valor: -1680.00
+   realizada: false
+
+dez:
+   caixa_id: 1
+   data: 2012-02-13
+   descricao: Celular
+   valor: -100.00
+   realizada: false
+
+onze:
+   caixa_id: 1
+   data: 2012-02-13
+   descricao: Manu
+   valor: -150.00
+   realizada: false
+
+doze:
+   caixa_id: 1
+   data: 2012-02-14
+   descricao: Tenis
+   valor: -180
+   realizada: false
+
+treze:
+   caixa_id: 1
+   data: 2012-02-15
+   descricao: WoW
+   valor: -30.00
+   realizada: false
+
+quatorze:
+   caixa_id: 2
+   data: 2012-1-10
+   descricao: Deposito Altair
+   valor: 4000.00
+   realizada: true
+
+quinze:
+   caixa_id: 2
+   data: 2012-1-12
+   descricao: Pgto PArcela MÓveis
+   valor: -169.00
+   realizada: true
+
+dezesseis:
+   caixa_id: 2
+   data: 2012-2-7
+   descricao: Emprestimo Ana
+   valor: 578.04
+   realizada: true
+
+dezessete:
+   caixa_id: 2
+   data: 2012-2-10
+   descricao: Devolução Emprestimo Ana
+   valor: -578.04
+   realizada: false
+
+dezoito:
+   caixa_id: 2
+   data: 2012-2-7
+   descricao: PGto Eder
+   valor: -300.00
+   realizada: false
+
+<% 20.upto(1000) do |i| %>
+<%= i.por_extenso %>:
+   caixa_id: <%= [1,2].sample %>
+   data: 201<%= [2,3,4].sample %>-<%= (1..12).to_a.sample %>-<%= (1..28).to_a.sample %>
+   descricao: Transação <%= i.por_extenso %> gerada aleatóriamente
+   valor: <%= (-5000..5000).to_a.sample %>.<%= (0..99).to_a.sample %>
+   realizada: <%= [true,false].sample %>
+<% end %>

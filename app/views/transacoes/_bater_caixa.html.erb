@@ -1,0 +1,11 @@
+<div id="bater_caixa_<%= c.id %>" saldo_atual='<%= c.saldo %>'>
+	<b>Saldo Atual:</b> <%= colore_valor c.saldo %>
+	<b>Tenho: </b> <%= text_field_tag('tenho','', onkeyup: "TRNs.exibeResultadoCaixa(#{c.id})") %>
+	<b>Falta Lançar: </b>
+	<div id="resultado" style="display: inline-block">
+		
+	</div>
+	<div id="link_base" style="display:none">		
+	<%= link_to('resultado',new_transacao_path(transacao:{caixa_id: c.id, valor: 'resultado'})) %>
+	</div>
+</div>

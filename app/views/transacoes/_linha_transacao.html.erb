@@ -1,0 +1,13 @@
+<% @realizado += t.valor if t.realizada?  %>
+<% @previsto += t.valor %>
+
+<tr id='<%= t.id %>' class='transacao <%= t.realizada? ? 'realizada' : 'prevista' %>' mes_ano='<%= mes_ano %>' visivel='false'>
+	<td class='acao'><%= link_to(image_tag('edit.png'),edit_transacao_path(t)) %></td>
+	<td class='acao'><%= link_to(image_tag('delete.png'), t, method: :delete, confirm: 'Tem Certeza?') %></td>
+	<td class='acao'><%= check_box_tag(:trn, :realizada, t.realizada, disabled: true, title: "Transação #{t.realizada ? :realizada : :prevista}" ) %></td>
+	<td id='data' ><%= t.data.to_s_br %></td>
+	<td id='descricao' ><%= t.descricao %></td>
+	<td id='valor' align='right'><%= colore_valor t.valor %></td>
+	<td id='saldo_realizado' align='right'><%= colore_valor @realizado %></td>
+	<td id='saldo_previsto' align='right'><%= colore_valor @previsto %></td>
+</tr>

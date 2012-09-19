@@ -1,0 +1,5 @@
+<div class="aba_caixa" id="<%= c.id %>">
+	<%= render(partial: "bater_caixa", locals: {c: c}) %>
+	<div><%= link_to('Nova transação', new_transacao_path(transacao: {caixa_id: c.id})) %></div>
+	<%= render(partial: 'tabela_transacoes', locals:{c: c}) %>
+</div>

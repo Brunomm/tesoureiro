@@ -1,0 +1,11 @@
+<div id="<%= params[:id] %>" class='flecha_esconde_informacao'>
+	
+	<%= image_tag('seta_informacao_recolhida.png', class: params[:expande_id],
+		onclick: "$('#{seletor}').show(); $(this).hide(); $('div##{params[:id]} img.#{params[:recolhe_id]}').show(); 
+		#{params[:ao_expandir]};") %>
+		
+	<%= image_tag('seta_informacao_expandida.png', class: params[:recolhe_id], style: "display:none",
+		onclick: "$('#{seletor}').hide(); $(this).hide(); $('div##{params[:id]} img.#{params[:expande_id]}').show(); 
+		#{params[:ao_expandir]};") %>
+
+</div>

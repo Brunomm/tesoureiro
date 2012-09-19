@@ -1,0 +1,102 @@
+@import "helpers";
+
+ul.abas_caixas{
+	background-color: #DEDEDE;
+	border: 1px solid #EDEDED;
+	border-bottom: 0px;
+	margin: 0; padding: 5px 5px 0 5px;
+	
+	li{
+		margin: 0px 3px 0px 3px;
+		display: inline;
+		padding: 2px 5px 0 5px;
+		
+		&.ativa{
+			background-color: #F7F7F7;
+			border: 1px solid #9E9E9E;
+			border-bottom: 1px solid #F7F7F7;
+			@include borda_redonda(3px, superior);
+		}
+		
+		a{
+			text-decoration: none;
+		}
+	}
+}
+
+div.aba_caixa{
+	padding: 5px;
+	background-color: #F7F7F7;
+	border: 1px solid #EDEDED;
+	border-top: 0px;
+}
+
+table.transacoes{
+	border-spacing: 0px;
+	border-padding: 0px;
+	border: 1px solid #A1A8FF;
+	
+	thead{
+		tr{
+			background-color: #C6CAFF;
+		}
+		th{
+			vertical-align: bottom;
+		}
+	}
+	
+	td.acao{ width: 16px;}
+	
+	td,th{ 
+		padding-left: 3px;
+		&#data{ width: 75px; }
+		&#descricao{padding-left:20px;}
+		&#valor,&#saldo_previsto,&#saldo_realizado{
+			width:10px;
+			padding:0 3px 0 4px;
+		}
+	}
+	
+	tr.transacao {
+		display:none;
+		td{
+			border-bottom: 1px solid #D8D8D8;
+		}
+	}
+	
+	tr.transacao:hover {
+		background-color: #EBEBFF;
+	}
+		
+	tr.inicio_mes{
+		background-color: #E4E4FC;
+		font-size: 13.5px;
+		td{
+			vertical-align: top;
+			border-top: 1px solid #090699;
+		}
+	}
+	
+	td.acao img{
+		@include opacity(0.1);
+	}
+	
+	tr:hover td.acao img{
+		@include opacity(1);
+	}
+	
+	tr.prevista{
+		opacity: 0.5;
+		
+		&:hover{ opacity: 0.7; };
+	}
+	
+	td#saldo_previsto{
+		opacity:0.7;
+	}
+
+	tr.transacao.atencao{
+		background-color: yellow;
+		@include transicao_duracao(1s);
+	}
+}
