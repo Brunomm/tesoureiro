@@ -17,5 +17,7 @@ Depois de clonar este repositório no git basta iniciar o servidor do rails em m
 git clone git@github.com:Rudiney/tesoureiro.git
 cd tesoureiro
 bundle install
+rake db:create
+rake db:migrate
 rails server -e production
 ```
